@@ -15,9 +15,9 @@ env_logger = "0.10"
 log = "0.4"
 regex = "1.0"
 # RSPack Rust crates for bundling and compilation
-# These are the actual crates we should be using for RSPack integration:
-# rspack_core = "0.2"        # Core bundling functionality
-# rspack_binding_options = "0.2"  # Configuration options
-# rspack_plugin_javascript = "0.2"  # JavaScript/TypeScript handling
-# rspack_plugin_css = "0.2"        # CSS processing
-# TODO: Add these once network access allows proper dependency resolution
+
+rspack_core = "0.2"        # Core bundling functionality
+rspack_binding_options = "0.2"  # Configuration options
+rspack_plugin_javascript = "0.2"  # JavaScript/TypeScript handling
+rspack_plugin_css = "0.2"        # CSS processing
+
