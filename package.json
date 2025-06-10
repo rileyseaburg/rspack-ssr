@@ -1,0 +1,21 @@
+{
+  "name": "rspack-ssr",
+  "version": "1.0.0",
+  "description": "RSPack SSR with Actix Web and Tera",
+  "main": "index.js",
+  "scripts": {
+    "build": "rspack build",
+    "dev": "rspack build --mode development"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@rspack/core": "^0.4.0",
+    "@rspack/cli": "^0.4.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "typescript": "^5.0.0"
+  }
+}
