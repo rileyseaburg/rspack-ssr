@@ -2,7 +2,6 @@ use actix_web::{web, App, HttpServer, HttpResponse, Result};
 use actix_files::Files;
 use tera::{Tera, Context};
 use std::sync::Arc;
-use std::process::Command;
 
 struct AppState {
     tera: Arc<Tera>,
@@ -25,51 +24,27 @@ async fn index(data: web::Data<AppState>) -> Result<HttpResponse> {
     }
 }
 
-fn run_build() -> anyhow::Result<()> {
-    log::info!("Starting RSPack build process...");
+// TODO: Implement rspack compilation using rspack Rust crates
+// This should replace the npm-based build process
+fn run_rspack_build() -> anyhow::Result<()> {
+    log::info!("Starting RSPack build process using Rust crates...");
     
-    // Check if node_modules exists, if not install dependencies
-    if !std::path::Path::new("node_modules").exists() {
-        log::info!("Installing Node.js dependencies...");
-        let output = Command::new("npm")
-            .arg("install")
-            .output()?;
-        
-        if !output.status.success() {
-            let stderr = String::from_utf8_lossy(&output.stderr);
-            log::error!("npm install failed: {}", stderr);
-            return Err(anyhow::anyhow!("npm install failed: {}", stderr));
-        }
-        log::info!("Dependencies installed successfully");
-    }
+    // Placeholder for rspack Rust API integration
+    // This needs to be implemented using rspack_core and related crates
+    log::warn!("RSPack Rust API integration not yet implemented");
+    log::warn!("Falling back to existing static files...");
     
-    // Run rspack build
-    log::info!("Running RSPack build...");
-    let output = Command::new("npm")
-        .arg("run")
-        .arg("build")
-        .output()?;
-    
-    if output.status.success() {
-        let stdout = String::from_utf8_lossy(&output.stdout);
-        log::info!("RSPack build completed successfully: {}", stdout);
-        Ok(())
-    } else {
-        let stderr = String::from_utf8_lossy(&output.stderr);
-        log::error!("RSPack build failed: {}", stderr);
-        Err(anyhow::anyhow!("RSPack build failed: {}", stderr))
-    }
+    Ok(())
 }
 
 #[tokio::main]
 async fn main() -> std::io::Result<()> {
     env_logger::init();
 
-    // Run the build process
-    if let Err(e) = run_build() {
-        log::error!("Build process failed: {}", e);
-        // Continue anyway with placeholder files
-        log::warn!("Continuing with placeholder files...");
+    // Run the build process using rspack Rust crates
+    if let Err(e) = run_rspack_build() {
+        log::error!("RSPack build process failed: {}", e);
+        log::warn!("Continuing with existing static files...");
     }
 
     // Initialize Tera template engine
