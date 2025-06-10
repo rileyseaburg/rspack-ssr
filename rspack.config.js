@@ -1,3 +1,9 @@
+// TODO: Remove this rspack.config.js once RSPack Rust crates are properly integrated
+// The configuration below shows what should be implemented in Rust using:
+// - rspack_core for compilation 
+// - rspack_plugin_javascript for TypeScript/JSX handling
+// - rspack_plugin_css for CSS processing
+
 const path = require('path');
 
 module.exports = {

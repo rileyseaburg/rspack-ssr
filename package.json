@@ -1,4 +1,5 @@
 {
+  "_comment": "TODO: Remove this package.json and rspack.config.js once RSPack Rust crates are properly integrated in Cargo.toml",
   "name": "rspack-ssr",
   "version": "1.0.0",
   "description": "RSPack SSR with Actix Web and Tera",
