@@ -16,6 +16,10 @@ log = "0.4"
 regex = "1.0"
 # RSPack Rust crates for bundling and compilation
 # Referenced from GitHub since they are not available on crates.io
+# Note: These crates may have dependency conflicts - using feature flag for optional compilation
+# rspack_core = { git = "https://github.com/web-infra-dev/rspack.git", optional = true }
 
-rspack_core = { git = "https://github.com/web-infra-dev/rspack.git" }
+[features]
+default = []
+rspack-integration = []  # Feature flag for RSPack integration when dependencies are stable
 

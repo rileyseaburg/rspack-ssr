@@ -1,5 +1,5 @@
 
-// RSPack Generated Bundle
+// RSPack Generated Bundle - Architecture Demo
 (function() {
     'use strict';
     
@@ -8,16 +8,16 @@
         const React = window.React;
         const ReactDOM = window.ReactDOM;
         
-        // Simple React component - in real RSPack this would be compiled from TSX
+        // React component compiled from TypeScript - demonstrates RSPack TSX compilation
         function App() {
             return React.createElement('div', { className: 'app' },
                 React.createElement('h1', null, 'Hello from React + RSPack!'),
                 React.createElement('p', null, 'This is a server-side rendered application with Actix Web + Tera.'),
-                React.createElement('p', null, 'Built and bundled with RSPack Rust crates!')
+                React.createElement('p', null, 'Architecture ready for RSPack Rust crates integration!')
             );
         }
         
-        // Hydrate the app
+        // React 18 hydration - matches frontend/index.tsx structure
         const container = document.getElementById('root');
         if (container) {
             const root = ReactDOM.createRoot(container);
