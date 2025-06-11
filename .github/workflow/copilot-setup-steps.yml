@@ -1,0 +1,40 @@
+name: "Copilot Setup Steps"
+
+on: workflow_dispatch
+
+jobs:
+  copilot-setup-steps:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout main repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install JavaScript dependencies and yarn
+        run: |
+          npm install -g yarn
+          yarn install --frozen-lockfile
+
+      - name: Set up Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+          components: rustfmt, clippy
+
+      - name: Add missing Rust target
+        run: |
+          rustup target add x86_64-unknown-linux-gnu
+          rustup target list --installed
+
+      - name: Fetch Rust dependencies
+        run: cargo fetch

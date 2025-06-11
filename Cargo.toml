@@ -4,3 +4,22 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+actix-web = "4.4"
+actix-files = "0.6"
+tera = "1.19"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tokio = { version = "1.0", features = ["full"] }
+anyhow = "1.0"
+env_logger = "0.10"
+log = "0.4"
+regex = "1.0"
+# RSPack Rust crates for bundling and compilation
+# Referenced from GitHub since they are not available on crates.io
+# Note: These crates may have dependency conflicts - using feature flag for optional compilation
+# rspack_core = { git = "https://github.com/web-infra-dev/rspack.git", optional = true }
+
+[features]
+default = []
+rspack-integration = []  # Feature flag for RSPack integration when dependencies are stable
+
